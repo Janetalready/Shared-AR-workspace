@@ -1,0 +1,25 @@
+<launch>
+    <node name="vel_command" pkg="convert_pcd" type="vel_commandv2.py" output="screen" />
+    <node name="bunny_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="BunnyCommand_ros" />
+        <remap from="TeapotCommand" to="BunnyCommand" />
+    </node>
+    <node name="table_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="TableCommand_ros" />
+        <remap from="TeapotCommand" to="TeapotCommand" />
+    </node>
+    <node name="sphere6_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="Sphere6Command_ros" />
+        <remap from="TeapotCommand" to="Sphere6Command" />
+    </node>
+    <node name="tomato_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="TomatoCommand_ros" />
+        <remap from="TeapotCommand" to="TomatoCommand" />
+    </node>
+    <node name="veggie_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="VeggieCommand_ros" />
+        <remap from="TeapotCommand" to="VeggieCommand" />
+    </node>
+    <node name="teapot_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+    </node>
+</launch>

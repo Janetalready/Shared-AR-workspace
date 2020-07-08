@@ -1,0 +1,79 @@
+<launch>
+    <!-- <node name="odom_pub" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map t 100" output="screen" /> -->
+    <!-- <node name="base_pub" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 odom base_footprint 100" output="screen" /> -->
+    <node name="sphere_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/sphere.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="sphere1_clouds"/>
+        <remap from="cloud_pcd" to="sphere1_cloud_pcd" />
+    </node>
+    <!-- <node name="sphere_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/shuwen/catkin_ws/src/convert_pcd/pcd/sphere.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="sphere_clouds"/>
+    </node> -->
+    <!-- <node name="sphere2_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/Sphere2.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="sphere2_clouds"/>
+        <remap from="cloud_pcd" to="sphere2_cloud_pcd" />
+    </node>
+    <node name="sphere3_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/sphere3.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="sphere3_clouds"/>
+        <remap from="cloud_pcd" to="sphere3_cloud_pcd" />
+    </node> -->
+    <!-- <node name="cylinder_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/shuwen/catkin_ws/src/convert_pcd/pcd/Cylinder.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="cylinder_clouds"/>
+        <remap from="cloud_pcd" to="cylinder_cloud_pcd" />
+    </node> -->
+    <node name="map_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/slamv3_05.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="map_clouds_o"/>
+        <remap from="cloud_pcd" to="map_cloud_pcd" />
+    </node>
+    <!-- <node name="teapot_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/teapot.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="teapot_clouds"/>
+        <remap from="cloud_pcd" to="teapot_cloud_pcd" />
+    </node>
+    <node name="table_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/table.pcd 0.01" output="screen">
+        <param name="~frame_id"  type="str"  value="table_clouds"/>
+        <remap from="cloud_pcd" to="table_cloud_pcd" />
+    </node>
+    <node name="bunny_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/bunny.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="bunny_clouds"/>
+        <remap from="cloud_pcd" to="bunny_cloud_pcd" />
+    </node> -->
+    <node name="bottle_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/bottle_003.pcd 0.01" output="screen">
+        <param name="~frame_id"  type="str"  value="bottle_clouds"/>
+        <remap from="cloud_pcd" to="bottle_cloud_pcd" />
+    </node>
+    <node name="meat_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/meat_04.pcd 0.01" output="screen">
+        <param name="~frame_id"  type="str"  value="meat_clouds"/>
+        <remap from="cloud_pcd" to="meat_cloud_pcd" />
+    </node>
+    <node name="potato_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/potato_2.pcd 0.01" output="screen">
+        <param name="~frame_id"  type="str"  value="potato_clouds"/>
+        <remap from="cloud_pcd" to="potato_cloud_pcd" />
+    </node>
+    <node name="tomato2_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/tomato2_2.pcd 0.01" output="screen">
+        <param name="~frame_id"  type="str"  value="tomato2_clouds"/>
+        <remap from="cloud_pcd" to="tomato2_cloud_pcd" />
+    </node>
+    <node name="tomato_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/tomato_3.pcd 0.01" output="screen">
+        <param name="~frame_id"  type="str"  value="tomato_clouds"/>
+        <remap from="cloud_pcd" to="tomato_cloud_pcd" />
+    </node>
+    <node name="table_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/table_05.pcd 0.01" output="screen">
+        <param name="~frame_id"  type="str"  value="table_clouds"/>
+        <remap from="cloud_pcd" to="table_cloud_pcd" />
+    </node>
+    <node name="veggie_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/vcla/Workspace/turtle_ws/src/convert_pcd/pcd/veggie_6.pcd 0.01" output="screen">
+        <param name="~frame_id"  type="str"  value="veggie_clouds"/>
+        <remap from="cloud_pcd" to="veggie_cloud_pcd" />
+    </node>
+    <node name="odom_pub" pkg="tf" type="static_transform_publisher" args="-2.5 3 0 -1.57 0 0 map odom 100" output="screen" /> 
+    <node name="map_tf_pub" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map map_clouds_o 100" output="screen" />
+    <node name="map_updater" pkg="convert_pcd" type="map_update.py" output="screen" />
+    <!-- <node name="visual_pub" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/shuwen/eddie_ws/src/convert_pcd/pcd/visual_map.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="visual_map"/>
+        <remap from="cloud_pcd" to="visual_map_cloud_pcd" />
+    </node> -->
+    <!-- <node name="map_pub2" pkg="pcl_ros" type="pcd_to_pointcloud" args="/home/shuwen/catkin_ws/src/convert_pcd/pcd/map_cloud_o2.pcd 0.1" output="screen">
+        <param name="~frame_id"  type="str"  value="map_clouds_o2"/>
+        <remap from="cloud_pcd" to="map_cloud_pcd2" />
+    </node>
+    <node name="map_tf_pub2" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map map_clouds_o2 100" output="screen" /> -->
+</launch>
