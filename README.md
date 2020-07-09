@@ -9,8 +9,8 @@
 ## Branch master: ros package for shared AR workspace
 - turtlebot:
   - copy additional launch file and map file from the turtlebot folder into the turtlebot package downloaded from the original repo
-  - urdf.launch: robot model description, launch initial environment, launch map server, lanuch move base
-  - rtabmap_mapping_kinect2.launch: localization using kinectv2
+  - urdf.launch: robot model description, launch initial environment, launch map server, lanuch move base. PCD file: [https://drive.google.com/drive/folders/1Up5CW8ETfZBM80y1TUtGkX5IkmbclsqD?usp=sharing]
+  - rtabmap_mapping_kinect2.launch: localization using kinectv2. Map file:[https://drive.google.com/file/d/1v7DF7QlYqN8SfYvfnjYB_8v3O14w9EBT/view?usp=sharing]
 - human detect:
   - copy the script in human_detection folder into the original repo and run using the same command in the original repo
   - RosNode_camera_update.py: setup and publish camera frame and human frame
