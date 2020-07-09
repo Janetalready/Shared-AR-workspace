@@ -15,7 +15,7 @@
   - copy the script in human_detection folder into the original repo and run using the same command in the original repo
   - RosNode_camera_update.py: setup and publish camera frame and human frame
 - ros communication:
-  - following the instructions to install communication package in both ROS and Unity
+  - following the instructions in ROS-Sharp Wiki to install communication package in both ROS and Unity
   - web_server.launch: begin communication between ROS and Hololens
 - conver_pcd:
   - pcd_pub.launch: start the whole environment including point-cloud map and original object models
