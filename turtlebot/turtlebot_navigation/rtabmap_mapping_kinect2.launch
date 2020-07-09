@@ -25,7 +25,7 @@
          $ roslaunch rtabmap_ros demo_turtlebot_rviz.launch
   -->
   
-  <arg name="database_path"     default="$(find eddiebot_navigation)/assets/slamv3_opt.db"/>
+  <arg name="database_path"     default="$(find turtlebot_navigation)/assets/slamv3_opt.db"/>
   <arg name="rgbd_odometry"     default="false"/>
   <arg name="rtabmapviz"        default="false"/>
   <arg name="localization"      default="false"/>
