@@ -80,9 +80,7 @@ class KinectDataSubscriber:
 
     def cal_quaternion(self, gaze_center):
         theta1 = np.arctan2(gaze_center[2], gaze_center[0])
-        theta2 = np.arctan2(gaze_center[1], gaze_center[0])
-        # if abs(theta1) >= 3.14:
-        #     theta1 = theta1 - 3.14 
+        theta2 = np.arctan2(gaze_center[1], gaze_center[0]) 
         return theta1, theta2
 
     def person2marker(self, pub, br, camera_frame_id, coord3d_mat, vis_mat):
@@ -103,9 +101,7 @@ class KinectDataSubscriber:
             # euler = transformations.euler_from_quaternion([self.rotation[0], -self.rotation[1], self.rotation[2], self.rotation[3]])
             q1, q3, q2, q0 = self.rotation[0], -self.rotation[1], self.rotation[2], self.rotation[3]
             euler = [0, 0, 0]
-            print(q0, q1, q2, q3)
             euler[1] = math.atan2(2*(q0*q3 + q1*q2), 1- 2*(q2**2 + q3**2))
-            print(-self.thetas[0], euler[1], -self.thetas[0] + euler[1])
             br.sendTransform((self.center[0] + self.position[0], self.center[1] - shift - self.position[1], self.center[2] + self.position[2]),
                                     transformations.quaternion_from_euler(0, -self.thetas[0] + euler[1], 0),
                                     rospy.Time.now(),
@@ -133,11 +129,6 @@ class KinectDataSubscriber:
             except (LookupException, ConnectivityException, ExtrapolationException):
                 return
 
-            with open('human_skele.p', 'wb') as f:
-                pickle.dump(self.points, f)
-
-            with open('human_trans.p', 'wb') as f:
-                pickle.dump([trans_m, rot_m], f)
             """ Publishes detected persons as ROS line lists. """
         else:
             LIMBS = np.array([[1, 2], [2, 3], [3, 4],
@@ -198,17 +189,8 @@ class KinectDataSubscriber:
                     normal = np.array([x_n - center[0], y_n - center[1], z_n - center[2]]) #+ np.array([0, 0, 0.05])
                     if np.linalg.norm(normal) > 0:
                         normal = normal/np.linalg.norm(normal)
-                        # p0 = Point(x = center[0], 
-                        #         y = center[1] - shift, 
-                        #         z = center[2])
-                        # p1 = Point(x = center[0] + normal[0]*50, 
-                        #         y = center[1] - shift+ normal[1]*50, 
-                        #         z = center[2] + normal[2]*50)
-                        # line_list.points.append(p0)
-                        # line_list.points.append(p1)
 
                     theta1, theta2 = self.cal_quaternion(normal)
-                    print(theta1, theta2)
                     if self.center is None or self.thetas is None:
                         try:
                             (trans_cam, rot_cam) = self.tflistener.lookupTransform('map', camera_frame_id, rospy.Time(0))

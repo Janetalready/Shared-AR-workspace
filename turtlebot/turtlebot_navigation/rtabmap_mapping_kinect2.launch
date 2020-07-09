@@ -25,7 +25,6 @@
          $ roslaunch rtabmap_ros demo_turtlebot_rviz.launch
   -->
   
-  <!-- <arg name="database_path"     default="$(find eddiebot_navigation)/assets/rtabmap.db"/> -->
   <arg name="database_path"     default="$(find eddiebot_navigation)/assets/slamv3_opt.db"/>
   <arg name="rgbd_odometry"     default="false"/>
   <arg name="rtabmapviz"        default="false"/>
@@ -46,13 +45,6 @@
       can be increase from 5 to 10 Hz to avoid some TF warnings.
   -->
   
-  <!-- Navigation stuff (move_base) -->
-  <!-- <include unless="$(arg simulation)" file="$(find turtlebot_bringup)/launch/3dsensor.launch"/> -->
-  <include file="$(find eddiebot_navigation)/launch/includes/move_base.launch.xml"/>
-  <include file="$(find eddiebot_navigation)/launch/img2rgb.launch" /> 
-  <!-- <include file="$(find ros_communication)/launch/web_server.launch"/> -->
-  <node name="map_cut" pkg="eddiebot_navigation" type="map_sparse.py" output="screen" />
-  <!-- <node name="voxel_listener" pkg="eddiebot_navigation" type="img2point_tf.py" output="screen" /> -->
   <node name="map_updater" pkg="convert_pcd" type="map_update.py" output="screen" />
 
   <group ns="rtabmap">
@@ -133,17 +125,5 @@
     </node>
     
   </group>
-  <!-- <node pkg="nodelet" type="nodelet" name="points_xyzrgb" args="standalone rtabmap_ros/point_cloud_xyzrgb" output="screen">
-    <remap from="rgb/image"       to="/kinect2/qhd/image_color_rect"/>
-    <remap from="depth/image"     to="/kinect2/qhd/image_depth_rect"/>
-    <remap from="rgb/camera_info" to="/kinect2/qhd/camera_info"/>
-    <remap from="cloud"           to="voxel_cloud" />
-    
-    <param name="rgb/image_transport"   type="string" value="compressed"/>
-    <param name="depth/image_transport" type="string" value="compressedDepth"/>
-    
-    <param name="queue_size" type="int" value="10"/>
-    <param name="voxel_size" type="double" value="0.01"/>
-  </node> -->
 
 </launch>

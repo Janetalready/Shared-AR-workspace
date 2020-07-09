@@ -3,59 +3,21 @@
      <arg name="port" value="8080"/>
      <arg name="max_message_size" value="1024" />
   </include>
-  <!-- <node name="file_server" pkg="file_server" type="file_server" output="screen"/> -->
-  <!-- <node name="cube_publisher" pkg="ros_communication" type="cube_publisher"/> -->
+
   <node name="camerapose_publisher" pkg="ros_communication" type="camerapose_pub.py"/>
-  <!-- <node name="teapot_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="teapot_listener" />
-    <remap from="CameraPose" to="TeapotPose" /> 
-    <remap from="CameraPose_ros" to="Teapot_ros" />
-  </node> -->
+
   <node name="table_publisher" pkg="ros_communication" type="camerapose_pub.py" >
     <remap from="listener" to="table_listener" />
     <remap from="CameraPose" to="TablePose" /> 
     <remap from="CameraPose_ros" to="TablePose_ros" />
   </node>
-  <!-- <node name="bunny_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="bunny_listener" />
-    <remap from="CameraPose" to="BunnyPose" /> 
-    <remap from="CameraPose_ros" to="BunnyPose_ros" />
-  </node> -->
+
   <node name="sphere1_publisher" pkg="ros_communication" type="camerapose_pub.py" >
     <remap from="listener" to="sphere1_listener" />
     <remap from="CameraPose" to="Sphere1Pose" /> 
     <remap from="CameraPose_ros" to="Sphere1Pose_ros" />
   </node>
-  <!-- <node name="sphere2_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="sphere2_listener" />
-    <remap from="CameraPose" to="Sphere2Pose" /> 
-    <remap from="CameraPose_ros" to="Sphere2Pose_ros" />
-  </node>
-  <node name="sphere3_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="sphere3_listener" />
-    <remap from="CameraPose" to="Sphere3Pose" /> 
-    <remap from="CameraPose_ros" to="Sphere3Pose_ros" />
-  </node>
-  <node name="sphere4_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="sphere4_listener" />
-    <remap from="CameraPose" to="Sphere4Pose" /> 
-    <remap from="CameraPose_ros" to="Sphere4Pose_ros" />
-  </node>
-  <node name="sphere5_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="sphere5_listener" />
-    <remap from="CameraPose" to="Sphere5Pose" /> 
-    <remap from="CameraPose_ros" to="Sphere5Pose_ros" />
-  </node>
-  <node name="sphere6_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="sphere6_listener" />
-    <remap from="CameraPose" to="Sphere6Pose" /> 
-    <remap from="CameraPose_ros" to="Sphere6Pose_ros" />
-  </node>
-  <node name="sphere7_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="sphere7_listener" />
-    <remap from="CameraPose" to="Sphere7Pose" /> 
-    <remap from="CameraPose_ros" to="Sphere7Pose_ros" />
-  </node> -->
+
   <node name="bottle_publisher" pkg="ros_communication" type="camerapose_pub.py" >
     <remap from="listener" to="bottle_listener" />
     <remap from="CameraPose" to="BottlePose" /> 
@@ -86,21 +48,5 @@
     <remap from="CameraPose" to="PotatoPose" /> 
     <remap from="CameraPose_ros" to="PotatoPose_ros" />
   </node>
-  <!-- <node name="cylinder_publisher" pkg="ros_communication" type="camerapose_pub.py" >
-    <remap from="listener" to="cylinder_listener" />
-    <remap from="CameraPose" to="CylinderPose" /> 
-    <remap from="CameraPose_ros" to="CylinderPose_ros" />
-  </node> -->
-  <!-- <node name="cameraframe_publisher" pkg="ros_communication" type="camera_frame_pub.py" output="screen"/> -->
-  <!-- <node name="sphere_string_listener" pkg="ros_communication" type="stringlistener.py" output="screen">
-    <param name="~file_name"  type="str"  value="/home/shuwen/sphere_play_s2_p2.p"/>
-  </node>
-  <node name="sphere2_string_listener" pkg="ros_communication" type="stringlistener.py" output="screen">
-    <param name="~file_name"  type="str"  value="/home/shuwen/sphere2_play_s2_p2.p"/>
-    <remap from="SphereString" to="Sphere2String" />
-  </node>
-  <node name="cylinder_string_listener" pkg="ros_communication" type="stringlistener.py" output="screen">
-    <param name="~file_name"  type="str"  value="/home/shuwen/cylinder_play_s2_p2.p"/>
-    <remap from="SphereString" to="CylinderString" />
-  </node> -->
+
 </launch>

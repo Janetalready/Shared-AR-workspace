@@ -17,38 +17,44 @@ import pickle
 
 class MoveBaseSeq():
 
-    def __init__(self):
+    def __init__(self, path_plan):
 
         rospy.init_node('move_base_sequence')
         self.br = tf.TransformBroadcaster()
-        self.command_frame = {'bunny_points':'BunnyCommand_ros', 'table_points':'TableCommand_ros', \
-        'teapot_points':'TeapotCommand_ros', 'sphere6_points':'Sphere6Command_ros', 'tomato_points':'TomatoCommand_ros', \
+        self.command_frame = {'bottle_points':'BottleCommand_ros', 'tomato2_points':'Tomato2Command_ros', \
+        'meat_points':'MeatCommand_ros', 'potato_points':'PotatoCommand_ros', 'tomato_points':'TomatoCommand_ros', \
         'veggie_points':'VeggieCommand_ros'}
-        self.bunny_compub = rospy.Publisher('BunnyCommand_ros', PoseStamped, queue_size=1)
-        self.table_compub = rospy.Publisher('TableCommand_ros', PoseStamped, queue_size=1)
-        self.teapot_compub = rospy.Publisher('TeapotCommand_ros', PoseStamped, queue_size=1)
-        self.sphere6_compub = rospy.Publisher('Sphere6Command_ros', PoseStamped, queue_size=1)
+        self.bottle_compub = rospy.Publisher('BottleCommand_ros', PoseStamped, queue_size=1)
+        self.tomato2_compub = rospy.Publisher('Tomato2Command_ros', PoseStamped, queue_size=1)
+        self.meat_compub = rospy.Publisher('MeatCommand_ros', PoseStamped, queue_size=1)
+        self.potato_compub = rospy.Publisher('PotatoCommand_ros', PoseStamped, queue_size=1)
         self.tomato_compub = rospy.Publisher('TomatoCommand_ros', PoseStamped, queue_size=1)
         self.veggie_compub = rospy.Publisher('VeggieCommand_ros', PoseStamped, queue_size=1)
-        self.compub = {'bunny_points':self.bunny_compub, 'table_points':self.table_compub, 
-        'teapot_points':self.teapot_compub, 'sphere6_points':self.sphere6_compub, 'tomato_points':self.tomato_compub, \
+        self.compub = {'bottle_points':self.bottle_compub, 'tomato2_points':self.tomato2_compub, 
+        'meat_points':self.meat_compub, 'potato_points':self.potato_compub, 'tomato_points':self.tomato_compub, \
         'veggie_points':self.veggie_compub}
-        self.frame_ids = {1:'veggie_points', 2: 'tomato_points', 7:'tomato_points', 3:'veggie_points'}
+        self.frame_ids = {1:'veggie_points', 2: 'tomato_points', 3:'tomato2_points', 4:'bottle_points', 5:'potato_points', 6:'meat_points'}
         self.veggie_hit = False
         self.tomato_hit = False
-        # self.hit_ids = {1:self.veggie_hit, 2:self.tomato_hit}
+        self.tomato2_hit = False
+        self.bottle_hit = False
+        self.potato_hit = False
+        self.meat_hit = False
+        self.hit_ids = {1:self.veggie_hit, 2:self.tomato_hit, 3:'tomato2_hit', 4:'bottle_hit', 5:'potato_hit', 6:'meat_hit'}
         self.grid_sub = rospy.Subscriber('map', OccupancyGrid, self.grid_callback, queue_size=1)
         self.veggiehit_sub = rospy.Subscriber('VeggieHit', String, self.veggiehit_callback, queue_size=1)
         self.tomatohit_sub = rospy.Subscriber('TomatoHit', String, self.tomatohit_callback, queue_size=1)
+        self.tomato2hit_sub = rospy.Subscriber('Tomato2Hit', String, self.tomatohit_callback, queue_size=1)
+        self.bottlehit_sub = rospy.Subscriber('BottleHit', String, self.tomatohit_callback, queue_size=1)
+        self.potatohit_sub = rospy.Subscriber('PotatoHit', String, self.tomatohit_callback, queue_size=1)
+        self.meathit_sub = rospy.Subscriber('MeatHit', String, self.tomatohit_callback, queue_size=1)
         self.grid_pub = rospy.Publisher('navigation_map', OccupancyGrid, queue_size=1)
         self.grid_map = None
         while True:
             if self.grid_map is not None:
                 print('map received')
                 break
-        # self.goal_pub = rospy.Publisher('quad_pos', PointStamped, queue_size=10)
-        with open('/home/vcla/Workspace/turtle_ws/src/convert_pcd/src/pathv2.p', 'rb') as f:
-            path_plan = pickle.load(f)
+  
         self.width = 217 
         self.heigth = 202
         self.data = np.zeros(self.width*self.heigth)

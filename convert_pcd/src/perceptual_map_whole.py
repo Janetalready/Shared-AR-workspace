@@ -298,14 +298,6 @@ class PerceptualMap:
                                 map_rot[:, 2]<=z_max), map_rot[:, 2]>=z_min), map_rot[:, 0] >= 0.3)
         candidate_points_ids = np.where(candidate_points_id)
         
-        # if flag:
-        #     msg = self.xyzrgb_array_to_pointcloud2(candidate_points, map_colors[candidate_points_id], stamp=rospy.get_rostime(), frame_id='test', seq=None)
-        #     self.pub_test_temp.publish(msg)
-        #     self.br.sendTransform((0, 0, 0),
-        #                         tf.transformations.quaternion_from_euler(0, 0, 0),
-        #                         rospy.Time.now(),
-        #                         'test',
-        #                         'map')
 
         level2_1_dict = dict()
         if len(candidate_points_ids[0]) > 0:
@@ -319,9 +311,6 @@ class PerceptualMap:
                 indx = int(z_idx*100 + y_idx)
                 if indx in level2_1_dict:
                     if np.mean(map_points[level2_1_dict[indx]][:, 0]) > x:
-                        # if abs(np.mean(map_points[level2_1_dict[indx]][:, 0]) - x) <= 0.02:
-                        #     level2_1_dict[indx].append(pid)
-                        # else:
                         level2_1_dict[indx] = [pid]
                 else:
                     level2_1_dict[indx] = [pid]
@@ -331,25 +320,15 @@ class PerceptualMap:
         temp_flags = np.zeros(map_points.shape[0]).astype(int)
         flags = np.empty((0, 1))
         for key in level2_1_dict.keys():
-            # joint_ids = set(np.where(self.map_flags == 0)[0]).intersection(set(level2_1_dict[key])) 
             temp_flags[level2_1_dict[key]] = 1
             temp_flags = np.multiply(temp_flags, map_flags).astype(bool)
 
             points = np.vstack([points, map_points[temp_flags]])
             colors = np.vstack([colors, map_colors[temp_flags]])
             map_flags[temp_flags] = 0
-            # self.ar_flags[temp_flags] = level
             if id_flags is not None:
                 flags = np.vstack([flags, id_flags[temp_flags].reshape(-1, 1)])
 
-        # if flag:
-        #     msg = self.xyzrgb_array_to_pointcloud2(points + human_center , colors, stamp=rospy.get_rostime(), frame_id='test', seq=None)
-        #     self.pub_test_temp.publish(msg)
-        #     self.br.sendTransform((0, 0, 0),
-        #                         tf.transformations.quaternion_from_euler(0, 0, 0),
-        #                         rospy.Time.now(),
-        #                         'test',
-        #                         'map')
         return points, colors, map_flags, flags
 
     def rot_ar(self, sphere, frame_id):
@@ -822,8 +801,6 @@ if __name__ == '__main__':
     mapper = PerceptualMap()
     try:
         while not rospy.is_shutdown():
-            # mapper.bunny_mutex.acquire()
-            # mapper.teapot_mutex.acquire()
             mapper.table_mutex.acquire()
             mapper.map_mutex.acquire()
             mapper.sphere1_mutex.acquire()

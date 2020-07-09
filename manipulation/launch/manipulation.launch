@@ -1,0 +1,27 @@
+<launch>
+  <node name="grid_map" pkg="manipulation" type="grid_map.py" output="screen" />
+    <node name="tomato2_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="Tomato2Command_ros" />
+        <remap from="TeapotCommand" to="Tomato2Command" />
+    </node>
+    <node name="bottle_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="BottleCommand_ros" />
+        <remap from="TeapotCommand" to="BottleCommand" />
+    </node>
+    <node name="meat_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="MeatCommand_ros" />
+        <remap from="TeapotCommand" to="MeatCommand" />
+    </node>
+    <node name="potato_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="PotatoCommand_ros" />
+        <remap from="TeapotCommand" to="PotatoCommand" />
+    </node>
+    <node name="tomato_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="TomatoCommand_ros" />
+        <remap from="TeapotCommand" to="TomatoCommand" />
+    </node>
+    <node name="veggie_command" pkg="convert_pcd" type="command_publisher.py" output="screen">
+        <remap from="TeapotCommand_ros" to="VeggieCommand_ros" />
+        <remap from="TeapotCommand" to="VeggieCommand" />
+    </node>
+</launch>

@@ -12,9 +12,6 @@
     <arg name="stacks" value="$(arg stacks)" />
     <arg name="3d_sensor" value="$(arg 3d_sensor)" />
   </include>
-  <!-- <include file="$(find turtlebot_bringup)/launch/includes/3dsensor/kinect_v2_driver.launch.xml">
-  	<arg name="publish_tf" value="true" />
-  </include> -->
   <include file="$(find convert_pcd)/launch/pcd_pub.launch" />
   <node name="cam_tf_pub" pkg="tf" type="static_transform_publisher" args="0 0 0 -1.5708 0 -1.5708 camera_link kinect2_link 100" output="screen" />
 
