@@ -1,12 +1,26 @@
 # Shared-AR-workspace
-## Requirement
+
+## 1. Dependencies & Installation
+
+Several dependencies need to be installed before using our EddieBot ROS packages. We list them below:
+
+
 - [turtlebot](https://github.com/turtlebot/turtlebot)
 - [turtlebot_navigation](https://github.com/turtlebot/turtlebot_apps/tree/indigo/turtlebot_navigation)
 - [rgbd-pose3d](https://github.com/lmb-freiburg/rgbd-pose3d)
 - [ros-sharp(UWP version)](https://github.com/siemens/ros-sharp/wiki)
 - [iai-kinect2](https://github.com/code-iai/iai_kinect2)
 - [octomap-server](http://wiki.ros.org/octomap_server)
-## Branch master: ros package for shared AR workspace
+
+
+## 2. Usage
+
+In order to use our shared AR workspace, both ends (a ROS system and a HoloLens system) need to be setup according to the instruction below.
+
+### 2.1 ROS End
+
+Download and install the [master branch](https://github.com/Janetalready/Shared-AR-workspace/tree/master) on your desktop that runs ROS. 
+
 - turtlebot:
   - copy additional launch file and map file from the turtlebot folder into the turtlebot package downloaded from the original repo
   - `roslaunch turtlebot_bringup urdf.launch`: lanuch robot model description, launch initial environment, launch map server, lanuch move base. 
@@ -22,6 +36,8 @@
   - `roslaunch covert_pcd load_pcd.launch`: implement object transformation, compute perception cost, build octomap
 - manipulation:
   - `roslaunch manipulation manipulation.launch`: compute navigation path, publish command to Hololens
-  
-## Branch Unity: unity package for shared AR workspace
-  This branch includes the objects and related scripts used for object manipulation and message communication in Untiy
+
+
+### 2.2 HoloLens End
+
+Download the [Unity branch](https://github.com/Janetalready/Shared-AR-workspace/tree/Unity) first, and import the project using [Unity](https://store.unity.com/#plans-individual). Then compile the project, and upload the hologram to your HoloLens.
