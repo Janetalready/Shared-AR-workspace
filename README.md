@@ -41,3 +41,15 @@ Download and install the [master branch](https://github.com/Janetalready/Shared-
 ### 2.2 HoloLens End
 
 Download the [Unity branch](https://github.com/Janetalready/Shared-AR-workspace/tree/Unity) first, and import the project using [Unity](https://store.unity.com/#plans-individual). Then compile the project, and upload the hologram to your HoloLens.
+
+## Citation
+
+```tex
+@inproceedings{qiu2020humanrobot,
+  title={Human-Robot Interaction in a Shared Augmented Reality Workspace},
+  author={Qiu, Shuwen and Liu, Hangxin and Zhang, Zeyu and Zhu, Yixin and Zhu, Song-Chun},
+  booktitle={2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year={2020},
+  organization={IEEE}
+}
+```
